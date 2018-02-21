@@ -1,6 +1,6 @@
 # smm
 
-updated at 2018-02-21
+* updated at 2018-02-21 *
 
 ./src: source codes 
   - utils: modules of data preprocessing, basic visualization, etc.
