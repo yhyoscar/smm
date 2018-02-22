@@ -93,4 +93,12 @@ def add_logreturn(quote, n=[0, 1]):
             quote.loc[quote.index[i:ntime], 'logreturn_'+format(i)] = logadj[i:ntime] - logadj[0:ntime-i]
     return quote
 
-
+def capstr2num(capstr):
+    if capstr[0] == '$':
+        unit = 1.0
+        if capstr[-1] == 'B': unit = 1.0e9
+        if capstr[-1] == 'M': unit = 1.0e6
+        if capstr[-1] == 'K': unit = 1.0e3
+        return float(str[1:-1]) * unit
+    else:
+        return np.nan
