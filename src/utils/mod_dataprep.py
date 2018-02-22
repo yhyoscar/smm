@@ -18,7 +18,7 @@ def checkexist(symbol='GOOG'):
         print 'ERROR:', symbol, 'does not exsit!'
         return False    
 
-def getonequote(symbol='GOOG', interval=dt_interval):
+def getonequote(symbol='GOOG'):
     if checkexist(symbol):
         url = path_data+symbol+'/'+symbol+'.csv'
         rtest = requests.get(url, allow_redirects=False)
