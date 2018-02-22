@@ -9,7 +9,7 @@
 
   - ARMA: ARMA models
 
-./test: test codes in ipython notebook
+./test: test codes with ipython notebook
   - test_dataprep.ipynb: test the functions in mod_dataprep.py
 
 
