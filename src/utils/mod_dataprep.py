@@ -12,10 +12,10 @@ def checkexist(symbol='GOOG'):
         if slist[slist['Symbol'] == symbol]['Exist'].values[0] == 1:
             return True
         else:
-            print 'ERROR: data of', symbol, 'does not exist!' 
+            print('ERROR: data of', symbol, 'does not exist!')
             return False
     else:
-        print 'ERROR:', symbol, 'does not exsit!'
+        print('ERROR:', symbol, 'does not exsit!')
         return False    
 
 def getonequote(symbol='GOOG'):
@@ -27,7 +27,7 @@ def getonequote(symbol='GOOG'):
             quote.symbol = symbol
             return quote
         else:
-            print 'ERROR:', symbol, 'does not exist in the database!'
+            print('ERROR:', symbol, 'does not exist in the database!')
             return None
     else:
         return None
@@ -47,7 +47,7 @@ def getinfo_onequote(symbol='GOOG'):
                      'MarketCap','IPOyear','Sector','industry',\
                      'Start_date', 'End_date']]
     else:
-        print 'ERROR:', symbol, 'does not exsit!'
+        print('ERROR:', symbol, 'does not exsit!')
         return None
 
 def getinfo_mulquote(symbol=['GOOG', 'MS']):
@@ -62,13 +62,13 @@ def getinfo_mulquote(symbol=['GOOG', 'MS']):
     return infos    
     
 def clean_null(quote, term='Adj Close'):
-    print 'cleanning null data ...'
+    print('cleanning null data ...')
     ntime0 = len(quote)
     quote = quote[quote[term] != 'null']
     ntime  = len(quote)
     if ntime0 > ntime:
-        print 'null data: ', ntime0 - ntime
-        print 'valid data: ', ntime
+        print('null data: ', ntime0 - ntime)
+        print('valid data: ', ntime)
     return quote
 
 def add_datetime(quote):
