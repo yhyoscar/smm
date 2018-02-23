@@ -1,0 +1,8 @@
+{
+  "web" : "http://129.49.67.246/stock/",
+  "allexchanges" : ["NYSE", "NASDAQ", "AMEX"],
+  "dt_interval" : "daily",
+  "comp_list" : "companylist",
+  "path_data" : "histdata/daily",
+  "fslist" : "stocks_list.csv"
+}
