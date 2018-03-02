@@ -1,6 +1,5 @@
 {
   "web" : "http://129.49.67.246/stock/",
-  "localpath" : "/disk2/yhy/Work/webserver/stock/"
   "allexchanges" : ["NYSE", "NASDAQ", "AMEX"],
   "dt_interval" : "daily",
   "comp_list" : "companylist",
