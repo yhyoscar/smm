@@ -3,14 +3,19 @@
 *updated at 2018-02-21*
 
 ./src: source codes 
-  - utils: modules of data preprocessing, basic visualization, etc.
-    - configure.py: global variables and parameters
-    - mod_dataprep.py: functions of data preprocessing
-
   - ARMA: ARMA models
+  - BT: Back test
+  - DT_RF: Decision tree and random forest
+  - GLM: General linear models
+  - GP: Gaussian processes
+  - MCMC: Monte-Carlo Markov chain
+  - NN: Neural networks
+  - PO: Portfolio optimization
+  - USL: Unsupervised learning
+  - configure: configure files
+  - utils: Modules of preprocessing, visualization, etc.
 
-./test: test codes with ipython notebook
-  - test_dataprep.ipynb: test the functions in mod_dataprep.py
+./test: testing codes with ipython notebook
 
 
 
