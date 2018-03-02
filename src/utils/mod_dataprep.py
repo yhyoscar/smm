@@ -54,6 +54,7 @@ def getinfo_mulquote(symbol=['GOOG', 'MS']):
     infos = None
     for s in symbol:
         info = getinfo_onequote(s)
+        print( s, end=', ')
         if infos is None:
             infos = info
         else:
@@ -94,11 +95,14 @@ def add_logreturn(quote, n=[0, 1]):
     return quote
 
 def capstr2num(capstr):
-    if capstr[0] == '$':
-        unit = 1.0
-        if capstr[-1] == 'B': unit = 1.0e9
-        if capstr[-1] == 'M': unit = 1.0e6
-        if capstr[-1] == 'K': unit = 1.0e3
-        return float(str[1:-1]) * unit
-    else:
+    if capstr is np.nan:
         return np.nan
+    else:
+        if capstr[0] == '$':
+            unit = 1.0
+            if capstr[-1] == 'B': unit = 1.0e9
+            if capstr[-1] == 'M': unit = 1.0e6
+            if capstr[-1] == 'K': unit = 1.0e3
+            return float(capstr[1:-1]) * unit
+        else:
+            return np.nan
