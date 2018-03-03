@@ -1,4 +1,7 @@
 import numpy as np
+import matplotlib
+import matplotlib.pyplot as plt
+import matplotlib.gridspec as gridspec
 import pandas as pd
 import requests
 import os
@@ -106,3 +109,38 @@ def capstr2num(capstr):
             return float(capstr[1:-1]) * unit
         else:
             return np.nan
+
+
+def plot_quote(quote, figid, vunit='M'):
+    info = getinfo_onequote(quote.symbol)
+    vunits = {'#':1, 'K':1000, 'M':1e6, 'B':1e9, 'T':1e12}
+    ntime = len(quote)
+    gs = gridspec.GridSpec(3, 1)
+    upindex = quote['Close'] > quote['Open']
+    dnindex = ~upindex
+    plt.subplot(gs[0:2, 0])
+    plt.bar(np.arange(ntime)[upindex.values], quote.loc[upindex.values,'Close']-quote.loc[upindex.values,'Open'], 
+            bottom=quote.loc[upindex.values, 'Open'], width=1, color='g')
+    plt.bar(np.arange(ntime)[dnindex.values], quote.loc[dnindex.values,'Close']-quote.loc[dnindex.values,'Open'], 
+            bottom=quote.loc[dnindex.values, 'Open'], width=1, color='r')
+    plt.plot(np.array([np.arange(ntime)[upindex.values]]*2), 
+             np.array([quote.loc[upindex.values,'Low'], quote.loc[upindex.values,'High'] ]), 
+            color='g')
+    plt.plot(np.array([np.arange(ntime)[dnindex.values]]*2), 
+             np.array([quote.loc[dnindex.values,'Low'], quote.loc[dnindex.values,'High'] ]), 
+            color='r')
+    #plt.plot(np.arange(ntime), 
+    #         quote['Adj Close'], 
+    #        color='k')
+    plt.title(info.Exchange[0]+': '+info.Symbol[0]+' ('+info.Name[0]+')', loc='left')
+    plt.xticks([],[])
+
+    plt.subplot(gs[2, 0])
+    plt.bar(np.arange(ntime)[upindex.values], quote.loc[upindex.values,'Volume']/vunits[vunit], width=1, color='g')
+    plt.bar(np.arange(ntime)[dnindex.values], quote.loc[dnindex.values,'Volume']/vunits[vunit], width=1, color='r')
+    plt.ylabel('Volume ('+vunit+')')
+    plt.xticks(np.arange(ntime)[::ntime//6], quote['Date'].values[::ntime//6])
+    
+    plt.tight_layout()
+    return 
+
