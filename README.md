@@ -1,9 +1,9 @@
 # smm
 
-*updated at 2018-02-21*
+*updated at 2018-03-03*
 
 ./src: source codes 
-  - ARMA: ARMA models
+  - ARIMA: ARIMA models
   - BT: Back test
   - DT_RF: Decision tree and random forest
   - GLM: General linear models
