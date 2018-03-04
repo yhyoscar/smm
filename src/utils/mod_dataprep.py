@@ -68,7 +68,9 @@ def getinfo_mulquote(symbol=['GOOG', 'MS']):
 def clean_null(quote, term='Adj Close'):
     print('cleanning null data ...')
     ntime0 = len(quote)
-    quote = quote[quote[term] != 'null']
+    quote = quote.replace(to_replace='null', value=np.nan)
+    quote = quote.dropna()
+    #quote = quote[quote[term] != 'null']
     ntime  = len(quote)
     if ntime0 > ntime:
         print('null data: ', ntime0 - ntime)
@@ -83,12 +85,11 @@ def add_logreturn(quote, n=[0, 1]):
     # n --- 0: in-day logreturn (Close/Open); 
     #       1: 1-day logreturn (Adj Close); 
     #       k: k-day logreturn (Adj Close)
-    if 'null' in quote['Close'].values:
-        quote = clean_null(quote)
+    quote = clean_null(quote)
     ntime = len(quote)
     logadj = np.array( np.log( quote.loc[:,'Adj Close'].astype('float') ))
     for i in n:
-        quote.loc[:,'logreturn_'+format(i)] = np.zeros([ntime])
+        quote.loc[:,'logreturn_'+format(i)] = np.zeros([ntime]) + np.nan
         if i==0:
             quote.loc[:,'logreturn_0'] = np.log(quote.loc[:, 'Close'].astype('float'))  - \
                 np.log(quote.loc[:, 'Open'].astype('float')) 
