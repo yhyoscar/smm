@@ -2,7 +2,7 @@
 
 *updated every Monday*
 
-## ====== 2018-02-26 ======
+## 2018-02-26
 + the past week:
     - finished the codes for downloading daily data
     - downloaded all historical daily data on NYSE, NASDAQ, and AMEX
@@ -18,7 +18,7 @@
     - change from python2 to python3
 
 
-## ====== 2018-03-05 ======
+## 2018-03-05
 + the past week:
     - updated the downloading codes
     - added test codes for visualization, pandas and company list analysis
