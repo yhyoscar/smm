@@ -65,14 +65,14 @@ def getinfo_mulquote(symbol=['GOOG', 'MS']):
                 infos = infos.append(info)
     return infos    
     
-def clean_null(quote, term='Adj Close'):
-    print('cleanning null data ...')
+def clean_null(quote, term='Adj Close', display=False):
+    if display: print('cleanning null data ...')
     ntime0 = len(quote)
     quote = quote.replace(to_replace='null', value=np.nan)
     quote = quote.dropna()
     #quote = quote[quote[term] != 'null']
     ntime  = len(quote)
-    if ntime0 > ntime:
+    if display and (ntime0 > ntime):
         print('null data: ', ntime0 - ntime)
         print('valid data: ', ntime)
     return quote
@@ -81,7 +81,7 @@ def add_datetime(quote):
     quote.loc[:, 'datetime'] = [datetime(int(s[0:4]), int(s[5:7]), int(s[8:10]) ) for s in quote['Date']]
     return quote
 
-def add_logreturn(quote, n=[0, 1]):
+def add_logreturn(quote, n=[0, 1], ):
     # n --- 0: in-day logreturn (Close/Open); 
     #       1: 1-day logreturn (Adj Close); 
     #       k: k-day logreturn (Adj Close)
@@ -111,6 +111,10 @@ def capstr2num(capstr):
         else:
             return np.nan
 
+def update_cap(ss):
+    capnum = [capstr2num(x) for x in ss['MarketCap'].values ]
+    ss['MarketCap'] = capnum
+    return ss
 
 def plot_quote(quote, figid, vunit='M'):
     info = getinfo_onequote(quote.symbol)
