@@ -31,4 +31,17 @@
 + problems to solve:
     - Zhenqing: debugs in utils
 
+## 2018-03-12
++ the past week:
+    - update the test notebooks 
+    - add symbol list of significant autoregressions 
+    - some ARIMA tests based on statsmodels
+
++ this week:
+    - finish ARIMA 
+    - build the database with MySQL
+
++ problems to solve:
+    - stationary test
+
 
