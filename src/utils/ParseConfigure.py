@@ -6,75 +6,57 @@ Created on Mar 12, 2018
 
 import os
 import json
-from pprint import pprint
-from anaconda_navigator import static
+
 
 class ParseConfigure(object):
     '''
-    classdocs
+    This class use for getting configuration data from json file
     '''
     
     def __init__(self):
         '''
-        Constructor
+        Constructor: To read data from json file
+        #TODO: This constructor should be revised, it's better not to put config data reading
+        # procedure in this constructor
         '''
-    
-    @staticmethod
-    def get_configure_data():
+        self.data = ''
+        
         parent_path = os.path.abspath(os.path.dirname(os.getcwd()))
         f_path = os.path.join(parent_path, "configure/Configure.json")
         with open(f_path) as data_file:
             data = json.load(data_file)
-#         pprint(data)
-        return data
+        self.data = data
     
-    @staticmethod
-    def __get_elem_web_url():
-#         print(data['web'])
-        data = ParseConfigure.get_configure_data()
-        return data['web']
+    def __get_elem_web_url(self):
+        return self.data['web']
     
-    @staticmethod
-    def __get_elem_hist_data():
-#         print(data['hist_data'])
-        data = ParseConfigure.get_configure_data()
-        return data['hist_data']
+    def __get_elem_hist_data(self):
+        return self.data['hist_data']
     
-    @staticmethod
-    def __get_elem_file_list():
-#         print(data['fslist'])
-        data = ParseConfigure.get_configure_data()
-        return data['fslist']
+    def __get_elem_file_list(self):
+        return self.data['fslist']
     
-    @staticmethod
-    def __get_elem_all_exchanges():
-        data = ParseConfigure.get_configure_data()
-        return data['allexchanges']
+    def __get_elem_all_exchanges(self):
+        return self.data['allexchanges']
+    
+    def __get_elem_dt_interval(self):
+        return self.data['dt_interval']
+    
+    def __get_elem_path_comp(self):
+        return self.data['comp_list']
+    
+    def get_path_comp(self):
+        return self.__get_elem_web_url() + self.__get_elem_path_comp()
+    
+    def get_path_data(self):
+        return self.__get_elem_web_url() + self.__get_elem_hist_data() + self.__get_elem_dt_interval()
+    
+    def get_fslist(self):
+        return self.get_path_data() + self.__get_elem_file_list()
 
-    @staticmethod
-    def __get_elem_dt_interval():
-        data = ParseConfigure.get_configure_data()
-        return data['dt_interval']
-    
-    @staticmethod
-    def __get_elem_path_comp():
-        data = ParseConfigure.get_configure_data()
-#         print(data['comp_list'])
-        return data['comp_list']
-    
-    @staticmethod
-    def get_path_comp():
-        return ParseConfigure.__get_elem_web_url() + ParseConfigure.__get_elem_path_comp()
-    
-    @staticmethod
-    def get_path_data():
-        return ParseConfigure.__get_elem_web_url() + ParseConfigure.__get_elem_hist_data() +ParseConfigure.__get_elem_dt_interval()
-        
-    @staticmethod
-    def get_fslist():
-        return ParseConfigure.get_path_data() +  ParseConfigure.__get_elem_file_list()
 
 if '__main__' == __name__:
-    print(ParseConfigure.get_path_comp())
-    print(ParseConfigure.get_path_data())
-    print(ParseConfigure.get_fslist())
+    parseConfig = ParseConfigure()
+    print(parseConfig.get_path_comp())
+    print(parseConfig.get_path_data())
+    print(parseConfig.get_fslist())
