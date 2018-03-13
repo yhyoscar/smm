@@ -10,7 +10,7 @@ import json
 
 class ParseConfigure(object):
     '''
-    This class use for getting configuration data from json file
+    This class is used for getting configuration data from json file.
     '''
     
     def __init__(self):
