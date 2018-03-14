@@ -1,7 +1,9 @@
 # Notes of installing, running, and configuring MySQL server on Ubuntu
 
 1. Installing and configuring MySQL server
+    
     Reference: https://www.digitalocean.com/community/tutorials/how-to-install-mysql-on-ubuntu-14-04
+    
     + > sudo apt-get install mysql-server
     + > sudo mysql_secure_installation
     + > sudo mysql_install_db
@@ -18,5 +20,6 @@
     + > sudo service mysql start
 
 3. Basic commands
+    
     Reference: https://dev.mysql.com/doc/mysql-getting-started/en/
 
