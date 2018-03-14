@@ -14,9 +14,9 @@
     + > sudo service mysql stop
     + > mv /var/lib/mysql /mnt/mydata/
     + replace /var/lib/mysql with /mnt/mydata/mysql in
-        - > /etc/passwd         (keyword: mysql)
-        + /etc/mysql/my.cnf     (keyword: [mysqld] datadir)
-        + /etc/apparmor.d/usr.sbin.mysqld   (keyword: /var/lib/mysql; replace it twice)
+        - > /etc/passwd         #(keyword: mysql)
+        - > /etc/mysql/my.cnf   #(keyword: [mysqld] datadir)
+        - > /etc/apparmor.d/usr.sbin.mysqld   #(keyword: /var/lib/mysql; replace it twice)
     + > sudo service mysql start
 
 3. Basic commands
