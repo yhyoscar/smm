@@ -44,4 +44,14 @@
 + problems to solve:
     - stationary test
 
+## 2018-03-18
++ Hechuan: Gaussian processes
++ Yaqi: Random forest
++ Xuewen: MCMC
++ Fushi: clustering
++ Jiayin: general linear model
++ Xiaoying: ARIMA model
++ Haiyang: missing data filtering
++ Zhenqing: Neural network
+
 
