@@ -31,4 +31,27 @@
 + problems to solve:
     - Zhenqing: debugs in utils
 
+## 2018-03-12
++ the past week:
+    - update the test notebooks 
+    - add symbol list of significant autoregressions 
+    - some ARIMA tests based on statsmodels
+
++ this week:
+    - finish ARIMA 
+    - build the database with MySQL
+
++ problems to solve:
+    - stationary test
+
+## 2018-03-18
++ Hechuan: Gaussian processes
++ Yaqi: Random forest
++ Xuewen: MCMC
++ Fushi: clustering
++ Jiayin: general linear model
++ Xiaoying: ARIMA model
++ Haiyang: missing data filtering
++ Zhenqing: Neural network
+
 
