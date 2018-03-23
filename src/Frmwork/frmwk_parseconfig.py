@@ -54,9 +54,3 @@ class ParseConfigure(object):
     def get_fslist(self):
         return self.get_path_data() + self.__get_elem_file_list()
 
-
-# if '__main__' == __name__:
-#     parseConfig = ParseConfigure()
-#     print(parseConfig.get_path_comp())
-#     print(parseConfig.get_path_data())
-#     print(parseConfig.get_fslist())
